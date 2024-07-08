@@ -5,33 +5,47 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, {useRef} from 'react';
+import React, { useRef } from 'react';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {COLORS} from '../../theme/Colors';
-import {scale} from 'react-native-size-matters';
-import {Heading, Subheading} from '../../theme/fonts';
+import { COLORS } from '../../theme/Colors';
+import { scale } from 'react-native-size-matters';
+import { Heading, Subheading } from '../../theme/fonts';
+import ItemCard from '../../components/ItemCard/ItemCard';
+import { useNavigation } from '@react-navigation/native';
+
+
 
 const Home = () => {
+
+  const navigation = useNavigation();
+
+  const handleCart = () => {
+    navigation.navigate('Cart')
+  }
+
+
   return (
-    <View style={{flex: 1}}>
+    <View style={{ flex: 1 }}>
       <View style={styles.header}>
         <EvilIcons name="location" size={24} color={COLORS.black} />
-        <Subheading style={{color: COLORS.grey}}>New York</Subheading>
-        <AntDesign name="shoppingcart" size={22} color={COLORS.black} />
+        <Subheading style={{ color: COLORS.grey }}>New York</Subheading>
+        <TouchableOpacity onPress={handleCart}>
+          <AntDesign name="shoppingcart" size={22} color={COLORS.black} />
+        </TouchableOpacity>
       </View>
-      <View style={{marginHorizontal: scale(18), marginTop: scale(10)}}>
-        <Heading style={{color: COLORS.black, fontSize: scale(24)}}>
+      <View style={{ marginHorizontal: scale(18), marginTop: scale(10) }}>
+        <Heading style={{ color: COLORS.black, fontSize: scale(24) }}>
           Find The Most
         </Heading>
-        <Heading style={{color: COLORS.green, fontSize: scale(24)}}>
+        <Heading style={{ color: COLORS.green, fontSize: scale(24) }}>
           Luxurious Furniture
         </Heading>
       </View>
       <View style={styles.bar}>
-        <TouchableOpacity style={{marginHorizontal: scale(10)}}>
+        <TouchableOpacity style={{ marginHorizontal: scale(10) }}>
           <AntDesign name="search1" size={20} color={COLORS.grey} />
         </TouchableOpacity>
         <View style={styles.searchWrapper}>
@@ -65,6 +79,8 @@ const Home = () => {
         <Heading>New Rivals</Heading>
         <MaterialIcons name="window" size={20} color={COLORS.green} />
       </View>
+
+      <ItemCard />
     </View>
   );
 };
