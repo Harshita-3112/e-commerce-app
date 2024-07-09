@@ -7,6 +7,7 @@ import { COLORS } from '../../theme/Colors'
 import { forSlideLeft } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/HeaderStyleInterpolators'
 import CTAButton from '../../components/CTAButton/CTAButton'
 import { useNavigation } from '@react-navigation/native'
+import { Colors } from 'react-native/Libraries/NewAppScreen'
 
 
 const Cart = () => {
@@ -18,7 +19,7 @@ const Cart = () => {
 
             <View style={styles.container}>
                 <TouchableOpacity onPress={() => navigation.goBack()}>
-                    <AntDesign name='leftcircle' size={22} color={'#343434'} />
+                    <AntDesign name='leftcircle' size={22} color={COLORS.dullBlack} />
                 </TouchableOpacity>
                 <Text style={styles.text}>Cart</Text>
             </View>

@@ -17,6 +17,7 @@ const User = () => {
     {
       icon: <AntDesign name="car" size={18} color={COLORS.black} />,
       title: 'Orders',
+      onPress: () => handleOrders()
     },
     {
       icon: <AntDesign name="shoppingcart" size={18} color={COLORS.black} />,
@@ -51,6 +52,9 @@ const User = () => {
     navigation.navigate('Cart')
   }
 
+  const handleOrders = () => {
+    navigation.navigate('Orders')
+  }
   const renderItem = ({ item, index }) => {
     return (
       <TouchableOpacity key={index} onPress={item.onPress}  >

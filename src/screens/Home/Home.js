@@ -1,4 +1,7 @@
 import {
+  FlatList,
+  Image,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -11,7 +14,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { COLORS } from '../../theme/Colors';
-import { scale } from 'react-native-size-matters';
+import { s, scale } from 'react-native-size-matters';
 import { Heading, Subheading } from '../../theme/fonts';
 import ItemCard from '../../components/ItemCard/ItemCard';
 import { useNavigation } from '@react-navigation/native';
@@ -19,6 +22,14 @@ import { useNavigation } from '@react-navigation/native';
 
 
 const Home = () => {
+
+  const renderProducts = ({ item, index }) => {
+    return (
+      <ItemCard title={item.title} type={item.type} price={item.price} />
+    );
+  };
+
+
 
   const navigation = useNavigation();
 
@@ -28,7 +39,7 @@ const Home = () => {
 
 
   return (
-    <View style={{ flex: 1 }}>
+    <ScrollView style={{ flex: 1 }}>
       <View style={styles.header}>
         <EvilIcons name="location" size={24} color={COLORS.black} />
         <Subheading style={{ color: COLORS.grey }}>New York</Subheading>
@@ -61,27 +72,42 @@ const Home = () => {
       </View>
       <View
         style={{
-          height: scale(120),
+          height: scale(130),
           width: '90%',
           backgroundColor: COLORS.grey,
           borderRadius: scale(10),
           marginHorizontal: scale(18),
-          marginTop: scale(20),
-        }}></View>
+          marginTop: scale(22),
+        }}>
+        <Image source={require('../../asstes/images/fn2.jpg')} style={{ height: '100%', width: '100%', resizeMode: 'cover', borderRadius: 10, }} />
+      </View>
       <View
         style={{
           flexDirection: 'row',
           justifyContent: 'space-between',
           alignItems: 'center',
-          marginTop: scale(16),
+          marginTop: scale(20),
           marginHorizontal: scale(18),
         }}>
         <Heading>New Rivals</Heading>
         <MaterialIcons name="window" size={20} color={COLORS.green} />
       </View>
 
-      <ItemCard />
-    </View>
+
+
+      <FlatList data={DATA}
+        renderItem={renderProducts}
+        numColumns={2}
+        columnWrapperStyle={{
+          justifyContent: 'space-between',
+          alignItems: 'center',
+
+
+
+        }}
+
+      />
+    </ScrollView>
   );
 };
 
@@ -121,3 +147,54 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
+
+
+const DATA = [
+  {
+    title: 'Wall Furniture',
+    type: 'Playful Interiors',
+    price: `$799.99`,
+
+  },
+
+
+  {
+    title: 'Dining Table',
+    type: 'Modern Living',
+    price: `$689.99`,
+
+  },
+
+
+  {
+    title: 'Bunk Bed',
+    type: 'Dream Furniture',
+    price: `$764.09`,
+
+  },
+
+
+  {
+    title: 'Glass Coffee Table',
+    type: 'Garden Oasis',
+    price: `$189.99`,
+
+  },
+
+
+  {
+    title: 'Dining Table',
+    type: 'Dream Furniture',
+    price: `$539.99`,
+
+  },
+
+
+  {
+    title: 'Office Desk',
+    type: 'Playful Interiors',
+    price: `$859.48`,
+
+  },
+
+]

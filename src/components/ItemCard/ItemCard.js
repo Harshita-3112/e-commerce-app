@@ -1,22 +1,23 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { scale } from 'react-native-size-matters'
 import AntDesign from 'react-native-vector-icons/AntDesign'
+import { COLORS } from '../../theme/Colors'
 
-const ItemCard = () => {
+const ItemCard = ({ title, type, price }) => {
     return (
-        <View style={{ height: scale(180), width: scale(180), borderRadius: scale(12), backgroundColor: "lightgrey", padding: scale(7), marginHorizontal: scale(18), marginTop: scale(10) }}>
+        <View style={styles.container}>
             <View style={{ height: scale(100), borderRadius: scale(12), backgroundColor: 'blue', }}>
-
+                <Image source={require('../../asstes/images/fn3.jpg')} style={{ height: '100%', width: 'auto', borderRadius: scale(8) }} />
             </View>
-            <Text>text here</Text>
+            <Text style={styles.text}>{title}</Text>
             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 <View style={{ marginTop: scale(6) }}>
-                    <Text>Playful Interiors</Text>
-                    <Text>$79.99</Text>
+                    <Text style={styles.text2}>{type}</Text>
+                    <Text style={styles.text3}>{price}</Text>
                 </View>
                 <View style={{ marginTop: scale(10) }}>
-                    <AntDesign name='pluscircle' size={26} color={'black'} />
+                    <AntDesign name='pluscircle' size={26} color={COLORS.green} />
                 </View>
             </View>
         </View>
@@ -25,4 +26,30 @@ const ItemCard = () => {
 
 export default ItemCard
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    container: {
+        height: scale(180),
+        width: scale(160),
+        borderRadius: scale(10),
+        backgroundColor: COLORS.lightBlue,
+        padding: scale(7),
+        marginHorizontal: scale(18),
+        marginTop: scale(10)
+    },
+    text: {
+        fontWeight: '600',
+        color: COLORS.black,
+        marginTop: scale(6),
+        fontSize: 15
+    },
+    text2: {
+        fontSize: 10,
+        fontWeight: '500',
+
+    },
+    text3: {
+        fontWeight: '700',
+        color: COLORS.dullBlack
+
+    }
+})
