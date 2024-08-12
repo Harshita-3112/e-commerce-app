@@ -1,19 +1,15 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import Header from '../../components/Header/Header'
-import { useNavigation } from '@react-navigation/native';
 
-
-const Orders = ({ item, index }) => {
-
-    const navigation = useNavigation();
+const Favorites = () => {
     return (
         <View>
-            <Header title={'Orders'} />
+            <Header title={'Favorites'} />
         </View>
     )
 }
 
-export default Orders
+export default Favorites
 
 const styles = StyleSheet.create({})

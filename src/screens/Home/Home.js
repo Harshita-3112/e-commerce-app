@@ -39,9 +39,11 @@ const Home = () => {
 
 
   return (
-    <ScrollView style={{ flex: 1 }}>
+    <View style={{ flex: 1 }}>
       <View style={styles.header}>
-        <EvilIcons name="location" size={24} color={COLORS.black} />
+        <TouchableOpacity>
+          <EvilIcons name="location" size={24} color={COLORS.black} />
+        </TouchableOpacity>
         <Subheading style={{ color: COLORS.grey }}>New York</Subheading>
         <TouchableOpacity onPress={handleCart}>
           <AntDesign name="shoppingcart" size={22} color={COLORS.black} />
@@ -60,7 +62,7 @@ const Home = () => {
           <AntDesign name="search1" size={20} color={COLORS.grey} />
         </TouchableOpacity>
         <View style={styles.searchWrapper}>
-          <TextInput placeholder="What are you looking for?" />
+          <TextInput placeholder="What are you looking for?" placeholderTextColor={COLORS.grey} />
         </View>
         <TouchableOpacity style={styles.searchBtn}>
           <Ionicons
@@ -101,13 +103,12 @@ const Home = () => {
         columnWrapperStyle={{
           justifyContent: 'space-between',
           alignItems: 'center',
-
-
+          paddingHorizontal: scale(18)
 
         }}
 
       />
-    </ScrollView>
+    </View>
   );
 };
 

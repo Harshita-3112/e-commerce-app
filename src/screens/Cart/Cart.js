@@ -8,21 +8,17 @@ import { forSlideLeft } from '@react-navigation/stack/lib/typescript/src/Transit
 import CTAButton from '../../components/CTAButton/CTAButton'
 import { useNavigation } from '@react-navigation/native'
 import { Colors } from 'react-native/Libraries/NewAppScreen'
+import Header from '../../components/Header/Header'
 
 
-const Cart = () => {
+const Cart = ({ item, index }) => {
 
     const navigation = useNavigation();
 
     return (
         <View >
+            <Header title={'Cart'} />
 
-            <View style={styles.container}>
-                <TouchableOpacity onPress={() => navigation.goBack()}>
-                    <AntDesign name='leftcircle' size={22} color={COLORS.dullBlack} />
-                </TouchableOpacity>
-                <Text style={styles.text}>Cart</Text>
-            </View>
             <View style={{ marginTop: scale(12) }}>
                 <CartItems />
                 <CartItems />

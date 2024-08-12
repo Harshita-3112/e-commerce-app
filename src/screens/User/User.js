@@ -13,6 +13,7 @@ const User = () => {
     {
       icon: <AntDesign name="hearto" size={18} color={COLORS.black} />,
       title: 'Favorites',
+      onPress: () => handleFavorites()
     },
     {
       icon: <AntDesign name="car" size={18} color={COLORS.black} />,
@@ -55,6 +56,13 @@ const User = () => {
   const handleOrders = () => {
     navigation.navigate('Orders')
   }
+
+  const handleFavorites = () => {
+    navigation.navigate('Favorites')
+  }
+
+
+
   const renderItem = ({ item, index }) => {
     return (
       <TouchableOpacity key={index} onPress={item.onPress}  >
